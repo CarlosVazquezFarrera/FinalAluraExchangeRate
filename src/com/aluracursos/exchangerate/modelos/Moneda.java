@@ -25,13 +25,11 @@ public abstract class Moneda {
         return value * mount;
     }
 
-    public void fromUSD(double amount ) {
-        String text = "El valor de " + amount  + " [USD] corresponde al valor final de: " + this.convertFromUSD(amount ) + " [" +this.getCurrencyCode()+"]\n";
-        System.out.println(text);
+    public String fromUSD(double amount ) {
+        return "El valor de " + amount  + " [USD] corresponde al valor final de: " + this.convertFromUSD(amount ) + " [" +this.getCurrencyCode()+"]\n";
     }
 
-    public void toUSD(double amount ) {
-        String text = "El valor de " + amount  + "[" + this.getCurrencyCode() + "]" + " corresponde al valor final de: " + this.convertToUSD(amount ) + " [USD]\n";
-        System.out.println(text);
+    public String toUSD(double amount ) {
+        return  "El valor de " + amount  + "[" + this.getCurrencyCode() + "]" + " corresponde al valor final de: " + this.convertToUSD(amount ) + " [USD]\n";
     }
 }

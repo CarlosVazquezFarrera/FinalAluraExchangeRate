@@ -24,14 +24,16 @@ public class Principal {
             Linea.print();
             System.out.println(menu);
             Linea.print();
-            System.out.println("Para salir teclee cualuier otro número\n");
+            System.out.println("9) Historial de búsqueda \n");
+            Linea.print();
+            System.out.println("0) Salir \n");
             Linea.print();
             System.out.print("Selecciona una opción\n");
             option = scanner.nextInt();
             Linea.print();
             exchange.start(option);
             Linea.print();
-        }while (option > 0 && option <= 8);
+        }while (option != 0 && option <= 9);
         System.out.println("Gracias por la preferencia");
     }
 }

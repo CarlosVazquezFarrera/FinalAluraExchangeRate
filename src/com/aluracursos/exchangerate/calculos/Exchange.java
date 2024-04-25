@@ -1,5 +1,6 @@
 package com.aluracursos.exchangerate.calculos;
 
+import com.aluracursos.exchangerate.Extra.Historial;
 import com.aluracursos.exchangerate.Extra.Linea;
 import com.aluracursos.exchangerate.api.ApiExchange;
 import com.aluracursos.exchangerate.modelos.*;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 
 public class Exchange {
     final ApiExchange api = new ApiExchange();
+    final Historial historial = new Historial();
     Map<String, Double> rates;
     double amount ;
 
@@ -24,6 +26,11 @@ public class Exchange {
     }
 
     public void start(int option) {
+        if (option == 9) {
+            historial.showHistory();
+            return;
+        }
+
         if (option <= 0 || option > 8) return;
 
         Scanner scanner = new Scanner(System.in);
@@ -45,16 +52,19 @@ public class Exchange {
                 moneda = new PesoColombiano(rates);
             }
         }
-        this.showConvertion(option, moneda);
+        this.convert(option, moneda);
     }
 
-    private void showConvertion(int option, Moneda moneda) {
+    private void convert(int option, Moneda moneda) {
+        String conversion;
         if (Option.convertFromUSD(option)) {
-            moneda.fromUSD(amount);
+            conversion = moneda.fromUSD(amount);
         }
         else  {
-            moneda.toUSD(amount);
+            conversion = moneda.toUSD(amount);
         }
+        System.out.println(conversion);
+        historial.add(conversion);
     }
 
 }
